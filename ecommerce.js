@@ -11,17 +11,25 @@ function changeTheme() {
   }
 }
 
-const arrImgs = [
-  "https://media.vandal.net/i/864x486/8-2024/2024816155725_1.jpg.webp",
-  "https://media.vandal.net/t200/102076/elden-ring-20216121316990_1.jpg",
-  "https://www.somosxbox.com/wp-content/uploads/2019/05/gears-5-portada.jpg"
-];
+document.querySelector("#title").innerHTML = "Productos"
 
-const images = document.querySelectorAll(".card img");
+let arrProds = [];
 
-const numImages = images.length;
-
-for (let i = 0; i < numImages && i < arrImgs.length; i++) {
-  images[i].src = arrImgs[i];
+for (let i = 1; i < 9; i++) {
+  const prod = `
+    <div class="card d-flex flex-column align-items-center" style="width: 18rem">
+      <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg"
+           class="card-img-top"
+           alt="imagen ${i}"
+           style="object-fit: cover; width: 100%; height: 150px;"
+      />
+      <div class="card-body d-flex flex-column">
+        <p class="card-text">
+          Producto ${i}
+        </p>
+      </div>
+    </div>`;
+  arrProds.push(prod);
 }
 
+document.querySelector(".container").innerHTML = arrProds.join('');
