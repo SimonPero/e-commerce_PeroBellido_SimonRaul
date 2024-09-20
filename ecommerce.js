@@ -28,6 +28,7 @@ for (let i = 1; i < 10; i++) {
         <p class="card-text">
           Producto ${i}
         </p>
+        <a href="/product.html"><button>Ver mas...</button></a>
       </div>
     </div>`;
   arrProds.push(prod);
