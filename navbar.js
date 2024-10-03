@@ -7,7 +7,7 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
       </div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar scroll</a>
+          <a class="navbar-brand" href="./home.html">Navbar scroll</a>
           <div class="d-flex align-items-center ms-auto">
             <div class="d-flex align-items-center me-3">
               <i class="bi bi-lock me-2"></i>
