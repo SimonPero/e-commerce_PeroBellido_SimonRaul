@@ -7,16 +7,12 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
       </div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./home.html">Navbar scroll</a>
+          <a class="navbar-brand" href="./home.html">Logo</a>
           <div class="d-flex align-items-center ms-auto">
-            <div class="d-flex align-items-center me-3">
-              <i class="bi bi-lock me-2"></i>
-              <span>Logeate</span>
-            </div>
             <div class="input-icons position-relative me-3">
-              <form class="d-flex" role="search">
+              <div class="d-flex" role="search">
                 <input
-                  class="form-control rounded-pill pe-5"
+                  class="form-control rounded-pill pe-5 input"
                   type="search"
                   placeholder="Buscar"
                   aria-label="Search"
@@ -24,11 +20,13 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
                 <i
                   class="bi bi-search position-absolute top-50 translate-middle-y end-0 me-3"
                 ></i>
-              </form>
+              </div>
             </div>
+            <button class="btn btn-outline-success me-3 boton">Search</button>
+            <button class="unstyled-button me-3 cleanSearch"><i class="bi bi-x-square me-3"></i></button>
             <i class="bi bi-cart2 me-3"></i>
             <button
-              class="navbar-toggler"
+              class="navbar-toggler me-3"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarScroll"
@@ -48,9 +46,9 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
       </div>`
 
 document.querySelector("header").innerHTML = navbar
-let categories = ["Accesorios Generales", "Conectividad y Periféricos", "Electro Hogar", "Hardware y Componentes", "Cámaras y Fotografía", "Dispositivos", "Gaming"]
+let categories = ["Accesorios Generales", "Conectividad y Periféricos", "Electro Hogar", "Hardware y Componentes", "Cámaras y Fotografía", "Todos"]
 let htmlCategories = []
 for (let category of categories) {
-    htmlCategories.push(`<a href="#" class="text-decoration-none text-reset">${category}</a>`)
+  htmlCategories.push(`<button class="unstyled-button categoria"><a href="#" class="text-decoration-none text-reset">${category}</a></button>`)
 }
 document.querySelector(".onlyCategorias").innerHTML = htmlCategories.join("")
