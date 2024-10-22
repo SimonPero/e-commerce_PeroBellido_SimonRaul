@@ -442,6 +442,7 @@ loadProds()
 const boton = document.querySelector(".boton")
 const cleanSearch = document.querySelector(".cleanSearch")
 const myCategories = document.querySelectorAll(".categoria")
+
 boton.addEventListener("click", () => {
   const input = document.querySelector(".input")
   console.log(input.value)
@@ -472,6 +473,7 @@ boton.addEventListener("click", () => {
   });
   document.querySelector(".container").innerHTML = cards.join('');
 })
+
 cleanSearch.addEventListener("click", () => {
   loadProds();
 });
