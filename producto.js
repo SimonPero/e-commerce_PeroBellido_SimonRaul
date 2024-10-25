@@ -396,7 +396,13 @@ let cardHtml = `
         <p class="card-text">
           Category:${card.category}
         </p>
-        <a href="/product.html?prod=${card.id}"><button>Ver mas...</button></a>
+        ${ 
+          localStorage.getItem("session")
+          ?
+          `<button type="button" class="btn btn-dark">Comprar</button>`
+          :
+          `<a class="text-decoration-none text-reset" href="./login.html"><button type="button" class="btn btn-dark">Tienes que inicar sesión para comprar</button></a>`
+        }
       </div>
     </div>
   `;

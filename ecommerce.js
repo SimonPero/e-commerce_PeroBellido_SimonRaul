@@ -474,9 +474,6 @@ boton.addEventListener("click", () => {
   document.querySelector(".container").innerHTML = cards.join('');
 })
 
-cleanSearch.addEventListener("click", () => {
-  loadProds();
-});
 for (const category of myCategories) {
   if (category.innerText === "Todos") {
     category.addEventListener("click", () => {

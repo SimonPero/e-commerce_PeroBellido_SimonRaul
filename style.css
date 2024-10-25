@@ -61,3 +61,11 @@
   background: none;
   border: none;
 }
+
+.cursor{
+  cursor: pointer;
+}
+
+.cursor:hover{
+  color: slateblue;
+}

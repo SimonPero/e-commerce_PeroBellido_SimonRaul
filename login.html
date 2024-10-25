@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="./auth.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -30,27 +31,6 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <script>
-      const session = localStorage.getItem("session");
-      if (!session) {
-        const form = document.querySelector("form");
-        console.log(form);
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          
-          const formData = new FormData(form);
-          const email = formData.get("email");
-          const password = formData.get("password");
-
-          if (email === "dou@example.com" && password === "password123") {
-            localStorage.setItem("session", email);
-            window.location.href = "./home.html";
-          } else {
-            alert("Credenciales incorrectas");
-          }
-        });
-      }
-      window.location.href = "./home.html";
-    </script>
+    <script src="./login.js"> </script>
   </body>
 </html>
