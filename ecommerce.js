@@ -1,19 +1,3 @@
-function changeTheme() {
-  const classes = document.getElementById("themeIcon").classList
-  const attributes = document.querySelector("html").attributes
-  if (classes[1] === "bi-moon-fill") {
-    classes.remove("bi-moon-fill")
-    classes.add("bi-sun-fill")
-    attributes[1].value = "dark"
-  } else if (classes[1] === "bi-sun-fill") {
-    classes.remove("bi-sun-fill")
-    classes.add("bi-moon-fill")
-    attributes[1].value = "light"
-  }
-}
-
-document.querySelector("h1").innerHTML = "Productos"
-
 let data = [
   {
     "id": 1,
@@ -401,7 +385,7 @@ function loadProds(categoria = "") {
             <p class="card-text">
               Category:${product.category}
             </p>
-            <a href="./product.html?prod=${product.id}"><button>Ver mas...</button></a>
+            <a href="./product.html?prod=${product.id}"><button type="button" class="btn btn-dark btn-sm">Ver mas...</button></a>
           </div>
         </div>
       `;
@@ -429,7 +413,7 @@ function loadProds(categoria = "") {
             <p class="card-text">
               Category:${product.category}
             </p>
-            <a href="./product.html?prod=${product.id}"><button>Ver mas...</button></a>
+            <a href="./product.html?prod=${product.id}"><button type="button" class="btn btn-dark btn-sm">Ver mas...</button></a>
           </div>
         </div>
       `;

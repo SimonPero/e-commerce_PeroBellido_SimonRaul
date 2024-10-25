@@ -376,6 +376,7 @@ let data = [
 let id = parseInt(window.location.search.split("=")[1])
 const card = data.find((product) => product.id === id);
 
+let counter = 0
 let cardHtml = `
     <div class="card d-flex flex-column align-items-center" style="width: 18rem">
       <img src="${card.img}"
@@ -396,16 +397,32 @@ let cardHtml = `
         <p class="card-text">
           Category:${card.category}
         </p>
-        ${ 
-          localStorage.getItem("session")
-          ?
-          `<button type="button" class="btn btn-dark">Comprar</button>`
-          :
-          `<a class="text-decoration-none text-reset" href="./login.html"><button type="button" class="btn btn-dark">Tienes que inicar sesión para comprar</button></a>`
-        }
+        ${localStorage.getItem("session")
+    ?
+    `
+          <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="restButton()">-</button>
+            <span class="form-control text-center shadow-none" id="number-counter" >${counter}</span>
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addButton()">+</button>
+          </div>
+          <button type="button" class="btn btn-dark">Añadir al carrito</button>
+          `
+    :
+    `<a class="text-decoration-none text-reset" href="./login.html"><button type="button" class="btn btn-dark">Tienes que inicar sesión para comprar</button></a>`
+  }
       </div>
     </div>
   `;
 
 
 document.querySelector(".producto").innerHTML = cardHtml
+const numberCounter = document.querySelector("#number-counter")
+function addButton() {
+  counter += 1
+  numberCounter.innerHTML = counter
+}
+
+function restButton() {
+  counter -= 1
+  numberCounter.innerHTML = counter
+}

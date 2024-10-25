@@ -1,3 +1,17 @@
+function changeTheme() {
+  const classes = document.getElementById("themeIcon").classList
+  const attributes = document.querySelector("html").attributes
+  if (classes[1] === "bi-moon-fill") {
+    classes.remove("bi-moon-fill")
+    classes.add("bi-sun-fill")
+    attributes[1].value = "dark"
+  } else if (classes[1] === "bi-sun-fill") {
+    classes.remove("bi-sun-fill")
+    classes.add("bi-moon-fill")
+    attributes[1].value = "light"
+  }
+}
+
 const navbar = `<div class="d-flex align-items-center ms-auto">
         <i class="bi bi-shop"></i>
         <p class="mb-0 ms-2">Sucursales</p>
@@ -47,12 +61,12 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
 
 function logOut() {
   localStorage.clear()
-  location.href = location.pathname
+  location.href = location.href
 }
 document.querySelector("header").innerHTML = navbar
 let categories = ["Accesorios Generales", "Conectividad y Periféricos", "Electro Hogar", "Hardware y Componentes", "Cámaras y Fotografía", "Todos"]
 let htmlCategories = []
 for (let category of categories) {
-  htmlCategories.push(`<button class="unstyled-button categoria"><a href="#" class="text-decoration-none text-reset">${category}</a></button>`)
+  htmlCategories.push(`<button class="unstyled-button categoria"><a class="text-decoration-none text-reset">${category}</a></button>`)
 }
 document.querySelector(".onlyCategorias").innerHTML = htmlCategories.join("")
