@@ -4,6 +4,10 @@
   }
 }
 
+header{
+  margin-bottom: 12px;
+}
+
 .input-icons .form-control:focus {
   box-shadow: none;
   border-color: #ced4da;

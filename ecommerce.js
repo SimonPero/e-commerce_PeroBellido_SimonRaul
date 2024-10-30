@@ -366,25 +366,25 @@ function loadProds(categoria = "") {
   if (categoria === "") {
     cards = data.map((product) => {
       return `
-        <div class="card d-flex flex-column align-items-center" style="width: 18rem">
+        <div class="card d-flex flex-column align-items-left" style="width:18rem;">
           <img src="${product.img}"
               class="card-img-top"
               alt="imagen ${product.title}"
               style="object-fit: cover; width: 100%; height: 150px;"
           />
-          <div class="card-body d-flex flex-column">
-            <p class="card-text">
-              Titulo:${product.title}
-            </p>
-            <p class="card-text">
-              Price:${product.price}
-            </p>
-            <p class="card-text">
-              Stock:${product.stock}
-            </p>
-            <p class="card-text">
-              Category:${product.category}
-            </p>
+          <div class="card-body d-flex flex-column text-nowrap">
+            <div class="card-text overflow-x-hidden">
+              Titulo: ${product.title}
+            </div>
+            <div class="card-text">
+              Price: ${product.price}
+            </div>
+            <div class="card-text">
+              Stock: ${product.stock}
+            </div>
+            <div class="card-text">
+              Category: ${product.category}
+            </div>
             <a href="./product.html?prod=${product.id}"><button type="button" class="btn btn-dark btn-sm">Ver mas...</button></a>
           </div>
         </div>
@@ -401,17 +401,17 @@ function loadProds(categoria = "") {
               style="object-fit: cover; width: 100%; height: 150px;"
           />
           <div class="card-body d-flex flex-column">
-            <p class="card-text">
-              Titulo:${product.title}
+            <p class="card-text>
+              Titulo: ${product.title}
             </p>
             <p class="card-text">
-              Price:${product.price}
+              Price: ${product.price}
             </p>
             <p class="card-text">
-              Stock:${product.stock}
+              Stock: ${product.stock}
             </p>
             <p class="card-text">
-              Category:${product.category}
+              Category: ${product.category}
             </p>
             <a href="./product.html?prod=${product.id}"><button type="button" class="btn btn-dark btn-sm">Ver mas...</button></a>
           </div>
@@ -429,7 +429,6 @@ const myCategories = document.querySelectorAll(".categoria")
 
 boton.addEventListener("click", () => {
   const input = document.querySelector(".input")
-  console.log(input.value)
   const filterData = data.filter((producto) => producto.title === input.value)
 
   const cards = filterData.map((product) => {
@@ -441,16 +440,16 @@ boton.addEventListener("click", () => {
             style="object-fit: cover; width: 100%; height: 150px;"
         />
         <div class="card-body d-flex flex-column">
-          <p class="card-text">
-            Titulo:${product.title}
+          <p class="card-text>
+            Titulo: ${product.title}
+          </p>
+          <p class="card-text ">
+            Price: ${product.price}
           </p>
           <p class="card-text">
-            Price:${product.price}
+            Stock: ${product.stock}
           </p>
-          <p class="card-text">
-            Stock:${product.stock}
-          </p>
-          <a href="./product.html?prod=${product.id}"><button>Ver mas...</button></a>
+          <a href="./product.html?prod=${product.id}"><button type="button" class="btn btn-dark btn-sm">Ver mas...</button></a>
         </div>
       </div>
     `;

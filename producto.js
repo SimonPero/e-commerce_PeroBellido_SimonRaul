@@ -398,14 +398,12 @@ let cardHtml = `
         </p>
         ${localStorage.getItem("session")
     ?
-    `
-          <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="restButton()">-</button>
-            <span class="form-control text-center shadow-none" id="number-counter" >${counter}</span>
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addButton()">+</button>
-          </div>
-          <button type="button" class="btn btn-dark" onclick="addButtonToCart()">Añadir al carrito</button>
-          `
+    `<div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="restButton()">-</button>
+          <span class="form-control text-center shadow-none" id="number-counter" >${counter}</span>
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addButton()">+</button>
+        </div>
+        <button type="button" class="btn btn-dark" onclick="addButtonToCart()">Añadir al carrito</button>`
     :
     `<a class="text-decoration-none text-reset" href="./login.html"><button type="button" class="btn btn-dark">Tienes que inicar sesión para comprar</button></a>`
   }
@@ -417,13 +415,17 @@ let cardHtml = `
 document.querySelector(".producto").innerHTML = cardHtml
 const numberCounter = document.querySelector("#number-counter")
 function addButton() {
-  counter += 1
-  numberCounter.innerHTML = counter
+  if (counter < foundProd.stock) {
+    counter += 1
+    numberCounter.innerHTML = counter
+  }
 }
 
 function restButton() {
-  counter -= 1
-  numberCounter.innerHTML = counter
+  if (counter > 0) {
+    counter -= 1
+    numberCounter.innerHTML = counter
+  }
 }
 
 let cart = JSON.parse(localStorage.getItem("cart"))
@@ -442,7 +444,7 @@ function addButtonToCart() {
     if (newQuantity <= foundProd.stock) {
       cart[existingItemIndex].quantity = newQuantity;
     } else {
-      console.warn("Requested quantity exceeds available stock");
+      alert("No puedes solicitar una cantidad mayor al stock del producto");
     }
   } else {
     cart.push({ prod: foundProd, quantity: counter });

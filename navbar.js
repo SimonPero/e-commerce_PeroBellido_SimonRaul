@@ -38,7 +38,7 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
               </div>
             </div>
             <button class="btn btn-outline-success me-3 boton">Search</button>
-            <i class="bi bi-cart2 me-3"></i>
+            <a href="cart.html" class="text-decoration-none text-reset"><i class="bi bi-cart2 me-3 cursor"></i></a>
             <button
               class="navbar-toggler me-3"
               type="button"
@@ -58,15 +58,18 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
       </nav>
       <div class="onlyCategorias d-flex justify-content-evenly">
       </div>`
-
+const page = location.pathname
 function logOut() {
   localStorage.clear()
   location.href = location.href
 }
 document.querySelector("header").innerHTML = navbar
-let categories = ["Accesorios Generales", "Conectividad y Periféricos", "Electro Hogar", "Hardware y Componentes", "Cámaras y Fotografía", "Todos"]
-let htmlCategories = []
-for (let category of categories) {
-  htmlCategories.push(`<button class="unstyled-button categoria"><a class="text-decoration-none text-reset">${category}</a></button>`)
+
+if (page !== "/product.html" && page !== "/cart.html") {
+  let categories = ["Accesorios Generales", "Conectividad y Periféricos", "Electro Hogar", "Hardware y Componentes", "Cámaras y Fotografía", "Todos"]
+  let htmlCategories = []
+  for (let category of categories) {
+    htmlCategories.push(`<button class="unstyled-button categoria"><a class="text-decoration-none text-reset">${category}</a></button>`)
+  }
+  document.querySelector(".onlyCategorias").innerHTML = htmlCategories.join("")
 }
-document.querySelector(".onlyCategorias").innerHTML = htmlCategories.join("")
