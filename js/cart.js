@@ -29,9 +29,10 @@ function restButton(id) {
 function deleteFromCart(id) {
   console.log(cartItems)
   const existingItemIndex = cartItems.findIndex(item => item.prod.id === id);
-  if (existingItemIndex < -1) return "error"
-  cartItems.splice(existingItemIndex, existingItemIndex+1);
+  if (existingItemIndex === -1) return "error"
+  cartItems.splice(existingItemIndex, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems))
+  location.pathname = location.pathname
 }
 
 if (cartItems.length === 0) {
@@ -43,15 +44,15 @@ if (cartItems.length === 0) {
 } else {
   const cartHtml = cartItems.map((item) => {
     return `
-<div class="card mb-3 shadow-sm" style="max-width: 45rem;">
+<div class="card mb-3 shadow-sm" style="width: 40rem;">
   <div class="row g-0 align-items-center">
     <div class="col-3">
       <img src="${item.prod.img}" class="img-fluid rounded-start" alt="${item.prod.title}">
     </div>
     <div class="col-9">
       <div class="card-body d-flex align-items-center justify-content-between">
-        <div class="d-flex flex-column me-3">
-          <h6 class="card-title">${item.prod.title}</h6>
+        <div class="d-flex flex-column me-3 ">
+          <h6 style="width:10rem;" class="card-title text-nowrap overflow-hidden">${item.prod.title}</h6>
         </div>
         <div class="d-flex align-items-center">
           <div class="d-flex flex-column me-2">
@@ -62,15 +63,13 @@ if (cartItems.length === 0) {
               <i class="bi bi-caret-down-fill"></i>
             </button>
           </div>
-          <!-- Fixed width for quantity to avoid shifting -->
           <span id="prod-quantity-${item.prod.id}" style="width: 2rem; text-align: center;">${item.quantity}</span>
         </div>
         <div class="d-flex align-items-center">
-          <!-- Fixed width for price to avoid shifting -->
           <p class="fw-bold text-primary mb-0 me-3" id="prod-price-${item.prod.id}" style="width: 5rem; text-align: right;">
             $${item.prod.price * item.quantity}
           </p>
-          <i class="bi bi-trash" onclick="deleteFromCart(${item.prod.id})"></i>
+          <i class="bi bi-trash cursor" onclick="deleteFromCart(${item.prod.id})"></i>
         </div>
       </div>
     </div>

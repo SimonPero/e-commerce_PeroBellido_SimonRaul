@@ -73,3 +73,13 @@ header{
 .cursor:hover{
   color: slateblue;
 }
+
+.cart-title {
+  text-decoration: underline;
+  text-underline-offset: 12px;
+  text-decoration-thickness: 4px; 
+}
+
+.borderless-list .list-group-item {
+  border: none;
+}
