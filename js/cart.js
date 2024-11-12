@@ -5,11 +5,11 @@ function addButton(id) {
   if (existingItemIndex < -1) return "error"
   const foundItem = cartItems[existingItemIndex];
   if (foundItem.quantity < foundItem.prod.stock) {
-    console.log("add", foundItem)
     foundItem.quantity += 1
     localStorage.setItem("cart", JSON.stringify(cartItems))
     document.querySelector(`#prod-quantity-${foundItem.prod.id}`).innerHTML = foundItem.quantity
     document.querySelector(`#prod-price-${foundItem.prod.id}`).innerHTML = `$${foundItem.quantity * foundItem.prod.price}`
+    updateCardDetail()
   }
 }
 
@@ -18,21 +18,41 @@ function restButton(id) {
   if (existingItemIndex < -1) return "error"
   const foundItem = cartItems[existingItemIndex];
   if (foundItem.quantity > 1) {
-    console.log("rest", foundItem)
     foundItem.quantity -= 1
     localStorage.setItem("cart", JSON.stringify(cartItems))
     document.querySelector(`#prod-quantity-${foundItem.prod.id}`).innerHTML = foundItem.quantity
     document.querySelector(`#prod-price-${foundItem.prod.id}`).innerHTML = `$${foundItem.quantity * foundItem.prod.price}`
+    updateCardDetail()
   }
 }
 
 function deleteFromCart(id) {
-  console.log(cartItems)
   const existingItemIndex = cartItems.findIndex(item => item.prod.id === id);
   if (existingItemIndex === -1) return "error"
   cartItems.splice(existingItemIndex, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems))
   location.pathname = location.pathname
+}
+
+function confirmRemoveToCart(id) {
+  Swal.fire({
+    title: "¿Seguro quieres eliminar este producto?",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, Eliminalo!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Toastify({
+        text: "Has eliminado correctamente el producto",
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)"
+        }
+      }).showToast();
+      deleteFromCart(id)
+    }
+  });
 }
 
 if (cartItems.length === 0) {
@@ -69,7 +89,7 @@ if (cartItems.length === 0) {
           <p class="fw-bold text-primary mb-0 me-3" id="prod-price-${item.prod.id}" style="width: 5rem; text-align: right;">
             $${item.prod.price * item.quantity}
           </p>
-          <i class="bi bi-trash cursor" onclick="deleteFromCart(${item.prod.id})"></i>
+          <i class="bi bi-trash cursor" onclick="confirmRemoveToCart(${item.prod.id})"></i>
         </div>
       </div>
     </div>
@@ -78,4 +98,108 @@ if (cartItems.length === 0) {
     `;
   });
   document.querySelector(".cartProds").innerHTML = cartHtml.join(" ");
+  updateCardDetail()
+}
+
+function updateCardDetail() {
+  let subTotal = 0;
+  let envio = 0;
+  for (const item of cartItems) {
+    subTotal += item.prod.price * item.quantity
+    envio += Math.round(subTotal / 20)
+  }
+
+  const costoFinal = subTotal + envio
+  document.querySelector(".cartDetail").innerHTML = `<div class="card" style="width: 24rem">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Detalles de tarjeta</h5>
+
+            <section class="mb-2">
+              <h6>Escoge tu tarjeta</h6>
+              <div class="card">
+                <ul
+                  class="list-group list-group-horizontal"
+                  style="height: 5rem"
+                >
+                  <li class="list-group-item border-0">
+                    <img
+                      class="w-100 h-100 rounded"
+                      src="./assets/masterCard.png"
+                      alt="MasterCard"
+                    />
+                  </li>
+                  <li class="list-group-item border-0">
+                    <img
+                      class="w-100 h-100 rounded"
+                      src="./assets/visa.png"
+                      alt="Visa"
+                    />
+                  </li>
+                  <li class="list-group-item border-0">
+                    <img
+                      class="w-100 h-100 rounded"
+                      src="./assets/mercadoPago.png"
+                      alt="MercadoPago"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="mb-2">
+              <div class="mb-2">
+                <label class="form-label">Número de tarjeta</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="1234 5678 9012 3456"
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Fecha de expiración</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="1234 5678 9012 3456"
+                />
+              </div>
+              <div class="d-flex">
+                <div class="mb-2 me-2" style="flex: 1">
+                  <label class="form-label">Fecha de expiración</label>
+                  <input type="text" class="form-control" placeholder="MM/AA" />
+                </div>
+                <div class="mb-2" style="flex: 1">
+                  <label class="form-label">CVV</label>
+                  <input type="text" class="form-control" placeholder="123" />
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-2">
+              <ul class="list-group borderless-list">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center border-0"
+                >
+                  Sub-Total
+                  <span>$${subTotal}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center border-0"
+                >
+                  Envio
+                  <span>$${envio}</span>
+                </li>
+              </ul>
+            </section>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <p class="card-text mb-0">
+                Costo final: <span>$${costoFinal}</span>
+              </p>
+              <button type="button" class="btn btn-outline-dark">
+                Finalizar compra
+              </button>
+            </div>
+          </div>
+        </div>`
 }

@@ -10,6 +10,12 @@ form.addEventListener("submit", (e) => {
         localStorage.setItem("session", email);
         window.location.href = "./home.html";
     } else {
-        alert("Credenciales incorrectas");
+        Toastify({
+            text: "Credenciales incorrectas",
+            className: "info",
+            style: {
+                background: "linear-gradient(to right, #ff5f6d, #ffc371)"
+            }
+        }).showToast();
     }
 });
