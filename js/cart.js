@@ -1,5 +1,6 @@
 const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-
+console.log(cartItems)
+let tarjetaInput = ""
 function addButton(id) {
   const existingItemIndex = cartItems.findIndex(item => item.prod.id === id);
   if (existingItemIndex < -1) return "error"
@@ -117,29 +118,29 @@ function updateCardDetail() {
             <section class="mb-2">
               <h6>Escoge tu tarjeta</h6>
               <div class="card">
-                <ul
-                  class="list-group list-group-horizontal"
-                  style="height: 5rem"
-                >
-                  <li class="list-group-item border-0">
+                <ul class="list-group list-group-horizontal list-group-flush" style="height: 5rem;">
+                  <li class="list-group-item list-group-item-action border-0">
                     <img
-                      class="w-100 h-100 rounded"
+                      class="w-100 h-100 rounded tarjetaInput"
                       src="./assets/masterCard.png"
                       alt="MasterCard"
+                      data-tarjeta="MasterCard"
                     />
                   </li>
-                  <li class="list-group-item border-0">
+                  <li class="list-group-item list-group-item-action border-0">
                     <img
-                      class="w-100 h-100 rounded"
+                      class="w-100 h-100 rounded tarjetaInput"
                       src="./assets/visa.png"
                       alt="Visa"
+                      data-tarjeta="Visa"
                     />
                   </li>
-                  <li class="list-group-item border-0">
+                  <li class="list-group-item list-group-item-action border-0">
                     <img
-                      class="w-100 h-100 rounded"
+                      class="w-100 h-100 rounded tarjetaInput"
                       src="./assets/mercadoPago.png"
                       alt="MercadoPago"
+                      data-tarjeta="MercadoPago"
                     />
                   </li>
                 </ul>
@@ -150,27 +151,20 @@ function updateCardDetail() {
               <div class="mb-2">
                 <label class="form-label">Número de tarjeta</label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
-                  placeholder="1234 5678 9012 3456"
-                />
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Fecha de expiración</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="1234 5678 9012 3456"
+                  placeholder="xxxx xxxx xxxx xxxx"
+                  id="tarjetaNum"
                 />
               </div>
               <div class="d-flex">
                 <div class="mb-2 me-2" style="flex: 1">
                   <label class="form-label">Fecha de expiración</label>
-                  <input type="text" class="form-control" placeholder="MM/AA" />
+                  <input type="date" class="form-control" placeholder="DD/MM/AA" id="fechaExpiracion" />
                 </div>
                 <div class="mb-2" style="flex: 1">
                   <label class="form-label">CVV</label>
-                  <input type="text" class="form-control" placeholder="123" />
+                  <input type="text" class="form-control" minlength="3" maxlength="4" placeholder="xxxx" id="CVV"/>
                 </div>
               </div>
             </section>
@@ -181,25 +175,136 @@ function updateCardDetail() {
                   class="list-group-item d-flex justify-content-between align-items-center border-0"
                 >
                   Sub-Total
-                  <span>$${subTotal}</span>
+                  <span id="subTotal">$${subTotal}</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0"
                 >
                   Envio
-                  <span>$${envio}</span>
+                  <span id="envio">$${envio}</span>
                 </li>
               </ul>
             </section>
 
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <p class="card-text mb-0">
+              <p class="card-text mb-0" id="costoFinal">
                 Costo final: <span>$${costoFinal}</span>
               </p>
-              <button type="button" class="btn btn-outline-dark">
+              <button type="button" class="btn btn-outline-dark" onclick="finalizarCompra()">
                 Finalizar compra
               </button>
             </div>
           </div>
         </div>`
 }
+
+function finalizarCompra() {
+  // Retrieve required DOM elements and parse values
+  const envio = parseFloat(document.querySelector("#envio").textContent.replace("$", "")) || 0;
+  const subTotal = parseFloat(document.querySelector("#subTotal").textContent.replace("$", "")) || 0;
+  const costoFinal = parseFloat(document.querySelector("#costoFinal").textContent.replace("$", "")) || 0;
+  const cvv = document.querySelector("#CVV").value.trim();
+  const fechaExpiracion = document.querySelector("#fechaExpiracion").value.trim();
+  const tarjetaNum = document.querySelector("#tarjetaNum").value.trim();
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Input validations
+  if (cartItems.length === 0) {
+    Toastify({
+      text: "No existen items en el carrito.",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)"
+      }
+    }).showToast();
+    return;
+  }
+
+  if (!tarjetaInput) {
+    Toastify({
+      text: "Debes elegir una tarjeta.",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)"
+      }
+    }).showToast();
+    return;
+  }
+
+  if (!cvv || !fechaExpiracion || !tarjetaNum) {
+    Toastify({
+      text: "Debes completar las opciones de pago.",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)"
+      }
+    }).showToast();
+    return;
+  }
+
+  const order = {
+    fechaDeCompra: new Date().toISOString(),
+    itemsComprados: cartItems,
+    precioFinal: costoFinal,
+    tarjetaUsada: tarjetaInput,
+    subTotal: subTotal,
+    envio: envio,
+  };
+  Swal.fire({
+    title: "¿Seguro quieres terminar tu compra?",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, finalizala!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(`https://67367aefaafa2ef222309f2a.mockapi.io/api/Orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error al procesar la compra.")
+          }
+          return response.json();
+        })
+        .then((data) => {
+          Toastify({
+            text: "¡Compra finalizada! Gracias por tu pedido.",
+            className: "info",
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)"
+            }
+          }).showToast();
+          console.log("Compra finalizada con éxito:", data);
+          localStorage.removeItem("cart");
+          window.location.reload()
+        })
+        .catch((error) => {
+          Toastify({
+            text: "Hubo un problema al finalizar la compra",
+            className: "info",
+            style: {
+              background: "linear-gradient(to right, #ff5f6d, #ffc371)"
+            }
+          }).showToast();
+        });
+    }
+  });
+}
+
+
+
+document.querySelectorAll('.tarjetaInput').forEach((tarjeta) => {
+  tarjeta.addEventListener('click', (event) => {
+    document.querySelectorAll('.tarjetaInput').forEach((img) => {
+      img.classList.remove('border', 'border-primary');
+    });
+    const selectedTarjeta = event.currentTarget;
+    selectedTarjeta.classList.add('border', 'border-2', 'border-info');
+    tarjetaInput = selectedTarjeta.alt
+  });
+})
