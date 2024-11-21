@@ -12,7 +12,7 @@ let prod = new Producto("Mustang", "muy caro", 1, 1000000000, "https://66d9ee6ca
 // Parse the product ID from the URL
 let id = parseInt(window.location.search.split("=")[1]);
 const foundProd = data.find((product) => product.id === id);
-
+document.querySelector("title").innerHTML = foundProd.title
 if (!foundProd) {
   document.querySelector(".producto").innerHTML = `<p>Producto no encontrado</p>`;
 } else {

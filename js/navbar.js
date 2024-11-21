@@ -21,9 +21,10 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
       </div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./home.html">Logo</a>
+          <a class="navbar-brand" href="./home.html">
+            <img src="./assets/logo.png" class="img-fluid" style="max-width: 150px; max-height: 50px;" alt="Logo">
+          </a>
           <div class="d-flex align-items-center ms-auto">
-          ${localStorage.getItem("session") ? `<span class="cursor me-3" onclick="logOut()">Cerrar sesión</span>` : `<a class="text-decoration-none text-reset me-3" href="./login.html"><span class="cursor">Iniciar sesión</span></a>`}
             <div class="input-icons position-relative me-3">
               <div class="d-flex" role="search">
                 <input
@@ -50,9 +51,10 @@ const navbar = `<div class="d-flex align-items-center ms-auto">
             >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <button onclick="changeTheme()" id="themeToggle">
+            <button class="me-3" onclick="changeTheme()" id="themeToggle">
               <i class="bi bi-moon-fill" id="themeIcon"></i>
             </button>
+            ${localStorage.getItem("session") ? `<span class="cursor me-3" onclick="logOut()">Cerrar sesión</span>` : `<a class="text-decoration-none text-reset me-3" href="./login.html"><span class="cursor">Iniciar sesión</span></a>`}
           </div>
         </div>
       </nav>
