@@ -58,12 +58,14 @@ function confirmRemoveToCart(id) {
 }
 
 if (cartItems.length === 0) {
+  document.querySelector("#vaciar-carrito").innerHTML = ""
   document.querySelector(".cartProds").innerHTML = `
         <div class="alert alert-warning text-center" role="alert">
             No tienes productos en tu carrito
         </div>
     `;
 } else {
+  document.querySelector("#vaciar-carrito").innerHTML = `<button class="btn" onclick="vaciarCarrito()">Vaciar Carrito</button>`
   const cartHtml = cartItems.map((item) => {
     return `
 <div class="card mb-3 shadow-sm" style="width: 40rem;">
@@ -200,7 +202,6 @@ function updateCardDetail() {
 }
 
 function finalizarCompra() {
-  // Retrieve required DOM elements and parse values
   const envio = parseFloat(document.querySelector("#envio").textContent.replace("$", "")) || 0;
   const subTotal = parseFloat(document.querySelector("#subTotal").textContent.replace("$", "")) || 0;
   const costoFinal = parseFloat(document.querySelector("#costoFinal").textContent.replace("$", "")) || 0;
@@ -209,7 +210,6 @@ function finalizarCompra() {
   const tarjetaNum = document.querySelector("#tarjetaNum").value.trim();
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Input validations
   if (cartItems.length === 0) {
     Toastify({
       text: "No existen items en el carrito.",
@@ -296,7 +296,10 @@ function finalizarCompra() {
   });
 }
 
-
+function vaciarCarrito() {
+  localStorage.removeItem("cart")
+  window.location = window.location
+}
 
 document.querySelectorAll('.tarjetaInput').forEach((tarjeta) => {
   tarjeta.addEventListener('click', (event) => {
