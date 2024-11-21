@@ -38,7 +38,7 @@ function loadProds(categoria = "") {
               style="object-fit: cover; width: 100%; height: 150px;"
           />
           <div class="card-body d-flex flex-column">
-            <p class="card-text>
+            <p class="card-text">
               Titulo: ${product.title}
             </p>
             <p class="card-text">
@@ -61,7 +61,6 @@ function loadProds(categoria = "") {
 }
 loadProds()
 const boton = document.querySelector(".boton")
-const cleanSearch = document.querySelector(".cleanSearch")
 const myCategories = document.querySelectorAll(".categoria")
 
 boton.addEventListener("click", () => {

@@ -1,6 +1,7 @@
 const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-console.log(cartItems)
+
 let tarjetaInput = ""
+
 function addButton(id) {
   const existingItemIndex = cartItems.findIndex(item => item.prod.id === id);
   if (existingItemIndex < -1) return "error"
@@ -271,7 +272,7 @@ function finalizarCompra() {
           }
           return response.json();
         })
-        .then((data) => {
+        .then(() => {
           Toastify({
             text: "¡Compra finalizada! Gracias por tu pedido.",
             className: "info",
@@ -279,7 +280,6 @@ function finalizarCompra() {
               background: "linear-gradient(to right, #00b09b, #96c93d)"
             }
           }).showToast();
-          console.log("Compra finalizada con éxito:", data);
           localStorage.removeItem("cart");
           window.location.reload()
         })
