@@ -1,363 +1,173 @@
 let data = [
-    {
-      "id": 1,
-      "title": "The Shawshank Redemption",
-      "detail": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 49,
-      "stock": 12,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 2,
-      "title": "The Godfather",
-      "detail": "Curabitur in libero ut massa volutpat convallis.",
-      "img": "http://dummyimage.com/450x300.png/ff4444/ffffff",
-      "price": 99,
-      "stock": 8,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 3,
-      "title": "The Dark Knight",
-      "detail": "Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-      "img": "http://dummyimage.com/450x300.png/5fa2dd/ffffff",
-      "price": 75,
-      "stock": 5,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 4,
-      "title": "Pulp Fiction",
-      "detail": "Aliquam erat volutpat. In congue.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 85,
-      "stock": 9,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 5,
-      "title": "Schindler's List",
-      "detail": "In hac habitasse platea dictumst.",
-      "img": "http://dummyimage.com/450x300.png/3e3e3e/ffffff",
-      "price": 95,
-      "stock": 4,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 6,
-      "title": "The Lord of the Rings: The Return of the King",
-      "detail": "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 120,
-      "stock": 7,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 7,
-      "title": "Forrest Gump",
-      "detail": "Nulla mollis molestie lorem. Quisque ut erat.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 55,
-      "stock": 13,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 8,
-      "title": "Inception",
-      "detail": "Nulla ac enim.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 100,
-      "stock": 6,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 9,
-      "title": "Fight Club",
-      "detail": "Integer ac leo. Pellentesque ultrices mattis odio.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 85,
-      "stock": 8,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 10,
-      "title": "The Matrix",
-      "detail": "Morbi non quam nec dui luctus rutrum.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 65,
-      "stock": 15,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 11,
-      "title": "Goodfellas",
-      "detail": "Proin eu mi. Nulla ac enim.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 75,
-      "stock": 11,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 12,
-      "title": "The Lion King",
-      "detail": "Duis bibendum. Morbi non quam nec dui luctus rutrum.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 45,
-      "stock": 20,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 13,
-      "title": "The Silence of the Lambs",
-      "detail": "Sed ante.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 95,
-      "stock": 10,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 14,
-      "title": "Saving Private Ryan",
-      "detail": "Praesent id massa id nisl venenatis lacinia.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 125,
-      "stock": 3,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 15,
-      "title": "Interstellar",
-      "detail": "Maecenas tristique, est et tempus semper, est quam pharetra magna.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 100,
-      "stock": 5,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 16,
-      "title": "The Avengers",
-      "detail": "Mauris enim leo, rhoncus sed, vestibulum sit amet.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 55,
-      "stock": 18,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 17,
-      "title": "Gladiator",
-      "detail": "Integer ac neque. Duis bibendum.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 115,
-      "stock": 2,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 18,
-      "title": "Jurassic Park",
-      "detail": "Morbi quis tortor id nulla ultrices aliquet.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 70,
-      "stock": 6,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 19,
-      "title": "Spider-Man",
-      "detail": "Suspendisse potenti.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 80,
-      "stock": 8,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 20,
-      "title": "Iron Man",
-      "detail": "Suspendisse potenti.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 90,
-      "stock": 10,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 21,
-      "title": "Star Wars",
-      "detail": "Curabitur gravida nisi at nibh.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 120,
-      "stock": 4,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 22,
-      "title": "Avatar",
-      "detail": "Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 100,
-      "stock": 12,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 23,
-      "title": "Titanic",
-      "detail": "Donec vitae nisi.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 65,
-      "stock": 7,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 24,
-      "title": "Jaws",
-      "detail": "Mauris ullamcorper purus sit amet nulla.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 85,
-      "stock": 9,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 25,
-      "title": "Toy Story",
-      "detail": "In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 50,
-      "stock": 14,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 26,
-      "title": "The Incredibles",
-      "detail": "Morbi a ipsum.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 60,
-      "stock": 16,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 27,
-      "title": "Finding Nemo",
-      "detail": "Morbi porttitor lorem id ligula.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 45,
-      "stock": 19,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 28,
-      "title": "Up",
-      "detail": "Proin interdum mauris non ligula pellentesque ultrices.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 55,
-      "stock": 10,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 29,
-      "title": "WALL-E",
-      "detail": "In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 60,
-      "stock": 8,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 30,
-      "title": "Coco",
-      "detail": "Suspendisse accumsan tortor quis turpis.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 65,
-      "stock": 9,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 31,
-      "title": "Ratatouille",
-      "detail": "Nullam varius.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 70,
-      "stock": 6,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 32,
-      "title": "Brave",
-      "detail": "Aenean auctor gravida sem.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 55,
-      "stock": 7,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 33,
-      "title": "Cars",
-      "detail": "Donec ut dolor.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 80,
-      "stock": 6,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 34,
-      "title": "The Lion King",
-      "detail": "Nulla justo.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 75,
-      "stock": 5,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 35,
-      "title": "Frozen",
-      "detail": "Maecenas tincidunt lacus at velit.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 50,
-      "stock": 11,
-      "category": "Cámaras y Fotografía"
-    },
-    {
-      "id": 36,
-      "title": "Moana",
-      "detail": "Duis mattis egestas metus.",
-      "img": "http://dummyimage.com/450x300.png/dddddd/000000",
-      "price": 60,
-      "stock": 14,
-      "category": "Accesorios Generales"
-    },
-    {
-      "id": 37,
-      "title": "Zootopia",
-      "detail": "Morbi odio odio, elementum eu, interdum eu.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 75,
-      "stock": 10,
-      "category": "Conectividad y Periféricos"
-    },
-    {
-      "id": 38,
-      "title": "Big Hero 6",
-      "detail": "Etiam pretium iaculis justo.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 65,
-      "stock": 5,
-      "category": "Electro Hogar"
-    },
-    {
-      "id": 39,
-      "title": "The Jungle Book",
-      "detail": "In hac habitasse platea dictumst.",
-      "img": "http://dummyimage.com/450x300.png/000000/ffffff",
-      "price": 95,
-      "stock": 8,
-      "category": "Hardware y Componentes"
-    },
-    {
-      "id": 40,
-      "title": "The Little Mermaid",
-      "detail": "Nulla suscipit ligula in lacus.",
-      "img": "http://dummyimage.com/450x300.png/cc0000/ffffff",
-      "price": 85,
-      "stock": 9,
-      "category": "Cámaras y Fotografía"
-    }
-  ]
-  
+  {
+    "id": 10,
+    "title": "Placa Madre ASUS Prime Z590",
+    "detail": "Placa madre compatible con procesadores Intel de última generación.",
+    "img": "https://dlcdnwebimgs.asus.com/gain/b6bab2c0-3b46-4808-9794-48decff9e997/w328",
+    "price": 65,
+    "stock": 15,
+    "category": "Hardware y Componentes"
+  },
+  {
+    "id": 11,
+    "title": "Funda Protectora para Tablet",
+    "detail": "Funda de silicona resistente para tabletas de hasta 10 pulgadas.",
+    "img": "https://www.innovartech.com.ar/wp-content/uploads/2021/11/fundatablet_kenwald-1.png",
+    "price": 75,
+    "stock": 11,
+    "category": "Accesorios Generales"
+  },
+  {
+    "id": 12,
+    "title": "Cable HDMI Ultra HD 2.1",
+    "detail": "Cable compatible con resoluciones 8K y transmisión de alta velocidad.",
+    "img": "https://www.omega-store.co/wp-content/uploads/2024/10/KMHM0498K.png.webp",
+    "price": 45,
+    "stock": 20,
+    "category": "Conectividad y Periféricos"
+  },
+  {
+    "id": 13,
+    "title": "Aire Acondicionado LG Split",
+    "detail": "Sistema de aire acondicionado con bajo consumo energético.",
+    "img": "https://www.lg.com/cac/images/aire-acondicionado-residencial/MD05818833/gallery/large01.jpg",
+    "price": 95,
+    "stock": 10,
+    "category": "Electro Hogar"
+  },
+  {
+    "id": 14,
+    "title": "Tarjeta Gráfica RTX 3080",
+    "detail": "Tarjeta gráfica para gaming con soporte Ray Tracing y 12GB de VRAM.",
+    "img": "https://www.gigabyte.com/FileUpload/Global/WebPage/824/img/1.png",
+    "price": 125,
+    "stock": 3,
+    "category": "Hardware y Componentes"
+  },
+  {
+    "id": 15,
+    "title": "Lente Canon EF 50mm f/1.8",
+    "detail": "Lente con apertura rápida ideal para retratos y poca luz.",
+    "img": "https://static.wixstatic.com/media/1a92e1_6b0e389d4fd04bd0a94ecc8ed7bb1e5d~mv2.png/v1/fill/w_500,h_375,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/1a92e1_6b0e389d4fd04bd0a94ecc8ed7bb1e5d~mv2.png",
+    "price": 100,
+    "stock": 5,
+    "category": "Cámaras y Fotografía"
+  },
+  {
+    "id": 16,
+    "title": "Cargador Portátil PowerBank 20,000mAh",
+    "detail": "Batería externa con múltiples puertos para cargar tus dispositivos.",
+    "img": "https://dcdn.mitiendanube.com/stores/004/886/199/products/diseno-sin-titulo-72-1695f4e7ee75efc20f17154428028000-1024-1024.png",
+    "price": 55,
+    "stock": 18,
+    "category": "Accesorios Generales"
+  },
+  {
+    "id": 17,
+    "title": "Switch Ethernet TP-Link TL-SG105",
+    "detail": "Switch de 5 puertos Gigabit para redes domésticas o pequeñas oficinas.",
+    "img": "https://soundcity.com.ar/wp-content/uploads/2020/08/TL-SG105-1-510x383.png",
+    "price": 115,
+    "stock": 2,
+    "category": "Conectividad y Periféricos"
+  },
+  {
+    "id": 18,
+    "title": "Licuadora Oster Pro",
+    "detail": "Licuadora de alto rendimiento con múltiples velocidades y funciones.",
+    "img": "https://www.tiendaamiga.com.bo/media/catalog/product/cache/deb88dadd509903c96aaa309d3e790dc/b/0/b03982.jpg",
+    "price": 70,
+    "stock": 6,
+    "category": "Electro Hogar"
+  },
+  {
+    "id": 19,
+    "title": "Audífonos Bluetooth",
+    "detail": "Audífonos inalámbricos con excelente calidad de sonido y batería de larga duración.",
+    "img": "https://prophonechile.cl/wp-content/uploads/2020/07/negro1.png",
+    "price": 75,
+    "stock": 11,
+    "category": "Accesorios Generales"
+  },
+  {
+    "id": 20,
+    "title": "Cable HDMI 4K",
+    "detail": "Cable de alta velocidad compatible con resoluciones 4K para transmisión de video nítido.",
+    "img": "https://png.pngtree.com/png-vector/20231006/ourmid/pngtree-white-background-showcasing-a-robust-and-broad-hdmi-cable-in-png-image_10079587.png",
+    "price": 45,
+    "stock": 20,
+    "category": "Conectividad y Periféricos"
+  },
+  {
+    "id": 21,
+    "title": "Plancha a Vapor Compacta",
+    "detail": "Plancha portátil con función de vapor para un planchado rápido y eficiente.",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_965834-MLU69241468137_052023-O.webp",
+    "price": 95,
+    "stock": 10,
+    "category": "Electro Hogar"
+  },
+  {
+    "id": 22,
+    "title": "Procesador Intel i7",
+    "detail": "Procesador de alto rendimiento ideal para juegos y edición de video.",
+    "img": "https://w7.pngwing.com/pngs/917/937/png-transparent-laptop-intel-core-i5-intel-core-i7-processor-blue-electronics-text.png",
+    "price": 125,
+    "stock": 3,
+    "category": "Hardware y Componentes"
+  },
+  {
+    "id": 23,
+    "title": "Cámara Reflex Canon",
+    "detail": "Cámara digital con lente intercambiable para fotógrafos profesionales.",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/81WTNK-UXEL._AC_SL1500_.jpg",
+    "price": 100,
+    "stock": 5,
+    "category": "Cámaras y Fotografía"
+  },
+  {
+    "id": 24,
+    "title": "Teclado Mecánico RGB",
+    "detail": "Teclado con retroiluminación personalizable y switches mecánicos para gamers.",
+    "img": "https://static.wixstatic.com/media/71a6c2_478704e54ca04d558a47bbb3e3854adc~mv2.png/v1/fill/w_288,h_288,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/03.png",
+    "price": 55,
+    "stock": 18,
+    "category": "Accesorios Generales"
+  },
+  {
+    "id": 25,
+    "title": "Router de Alta Velocidad",
+    "detail": "Router inalámbrico con tecnología avanzada para conexión estable y rápida.",
+    "img": "https://i.blogs.es/1a7f06/d-link-dwr-953v2/1366_2000.png",
+    "price": 115,
+    "stock": 2,
+    "category": "Conectividad y Periféricos"
+  },
+  {
+    "id": 26,
+    "title": "Horno Microondas Digital",
+    "detail": "Microondas con múltiples funciones y pantalla táctil intuitiva.",
+    "img": "https://images.fravega.com/f300/a3500b86977929efad3f9d059f73c435.jpg.webp",
+    "price": 70,
+    "stock": 6,
+    "category": "Electro Hogar"
+  },
+  {
+    "id": 27,
+    "title": "Tarjeta Gráfica RTX 3060",
+    "detail": "Tarjeta gráfica de última generación para juegos y diseño gráfico.",
+    "img": "https://m.media-amazon.com/images/I/71tduSp8ooL._AC_SX679_.jpg",
+    "price": 80,
+    "stock": 8,
+    "category": "Hardware y Componentes"
+  },
+  {
+    "id": 28,
+    "title": "Trípode Profesional",
+    "detail": "Trípode ajustable de aluminio con cabezal giratorio para cámaras.",
+    "img": "https://i0.wp.com/m.media-amazon.com/images/I/51HqeLaz2IL.jpg?w=880&ssl=1",
+    "price": 90,
+    "stock": 10,
+    "category": "Cámaras y Fotografía"
+  }
+];
